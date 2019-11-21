@@ -1,10 +1,8 @@
 ---
 layout: post
-title: Test markdown
-subtitle: Each post also has a subtitle
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
+title: Constant-time Programming in Haskell?
+subtitle: If type-checking wondered about resources...
+tags: [Haskell]
 comments: true
 ---
 
