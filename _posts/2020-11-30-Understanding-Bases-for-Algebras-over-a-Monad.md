@@ -128,3 +128,5 @@ $$ Y_\alpha \xrightarrow{f} Y_\beta \xrightarrow{i_\beta}X=Y_\alpha \xrightarrow
 and
 
 $$ X \xrightarrow{d_\alpha} T(Y_\alpha)\xrightarrow{T(f)}T(Y_\beta)=X\xrightarrow{d_\beta}T(Y_\beta).$$
+
+A concrete example...
