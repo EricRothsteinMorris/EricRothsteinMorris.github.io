@@ -8,7 +8,7 @@ layout: null
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;
-  font-size: 18px;
+  font-size: 16px; /*was 18. Size of text in Body paragraphs (all page)*/
   color: #404040;
   position: relative;
   background-color: {{ site.page-col }};
@@ -21,10 +21,14 @@ p {
   line-height: 1.5;
   margin: 30px 0;
 }
+
+
+
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
+
 a {
   color: {{ site.link-col }};
 }
@@ -117,7 +121,7 @@ img {
 
 .navbar-custom .nav li a {
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 16px; /*was 12. Text on the right of the navbar*/
   letter-spacing: 1px;
 }
 
@@ -264,7 +268,7 @@ footer {
   padding: 30px 0;
   border-top: 1px #EAEAEA solid;
   margin-top: 50px;
-  font-size: 14px;
+  font-size: 12px /*was 14, Footer Theme text*/;
   background-color: {{ site.footer-col }};
   {% if site.footer-img %}
   background-image: url({{ site.footer-img | relative_url }});
@@ -296,13 +300,13 @@ footer .theme-by {
 
 @media only screen and (min-width: 768px) {
   footer {
-    padding: 50px 0;
+    padding: 30px 0; /*was 50 0. Distance to social media links*/
   }
   footer .footer-links {
-    font-size: 18px;
+    font-size: 20px ; /*was 18. Footer size of social networks*/
   }
   footer .copyright {
-    font-size: 16px;
+    font-size: 16px; /*was 16. Size of my name and year*/
   }
 }
 
@@ -335,7 +339,7 @@ footer .theme-by {
 }
 
 .post-preview .post-title {
-  font-size: 30px;
+  font-size: 20px; /*was 30*/
   margin-top: 0;
 }
 .post-preview .post-subtitle {
@@ -343,13 +347,20 @@ footer .theme-by {
   font-weight: 300;
   margin-bottom: 10px;
 }
-.post-preview .post-meta,
-.post-heading .post-meta {
+.post-preview .post-meta{
   color: #808080;
-  font-size: 18px;
+  font-size: 16px; /*was 18*/
   font-style: italic;
   margin: 0 0 10px;
 }
+.post-heading .post-meta {
+  text-align: center;
+  color: #808080;
+  font-size: 16px; /*was 18*/
+  font-style: italic;
+  display: block;
+}
+
 .post-preview .post-entry {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -381,7 +392,7 @@ footer .theme-by {
 
 @media only screen and (min-width: 768px) {
   .post-preview .post-title {
-    font-size: 36px;
+    font-size: 24px; /*was 36*/
   }
 }
 
@@ -390,7 +401,7 @@ footer .theme-by {
 .blog-tags {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #999;
-  font-size: 15px;
+  font-size: 12px; /*was 15. Size of tags in blog posts previews*/
   margin-bottom: 30px;
 }
 
@@ -470,20 +481,21 @@ footer .theme-by {
 }
 .intro-header .page-heading h1 {
   margin-top: 0;
-  font-size: 50px;
+  font-size: 50px; /*was 50. Unknown*/
 }
 .intro-header .post-heading h1 {
   margin-top: 0;
-  font-size: 35px;
+  font-size: 35px; /*was 35*/
 }
 .intro-header .page-heading .page-subheading,
 .intro-header .post-heading .post-subheading {
-  font-size: 27px;
+  font-size: 20px; /*was 27. Size of (F in Functional...), and size of subheading in blogposts*/
   line-height: 1.1;
   display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
   margin: 10px 0 0;
+  text-align: center;
 }
 .intro-header .post-heading .post-subheading {
   margin-bottom: 20px;
@@ -504,7 +516,7 @@ footer .theme-by {
   background: rgba(30, 30, 30, 0.6);
   position: absolute;
   padding: 5px 10px;
-  font-size: 11px;
+  font-size: 11px; /*was 11*/
   color: #EEE;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   right: 0;
@@ -523,13 +535,14 @@ footer .theme-by {
     padding: 150px 0;
   }
   .intro-header .page-heading h1 {
-    font-size: 80px;
+    font-size: 40px; /*was 80. Size of the title FixedPointers in the frontpage*/
   }
   .intro-header .post-heading h1 {
-    font-size: 50px;
+    font-size: 36px; /*was 50, Size of title in blog posts*/
+    text-align: center;
   }
   .intro-header.big-img .img-desc {
-    font-size: 14px;
+    font-size: 14px; /*was 14*/
   }
 }
 
@@ -785,4 +798,17 @@ pre {
   color: #808080;
   font-style: italic;
   font-size: 16px;
+}
+
+/*Customisation*/
+h1 {
+  font-size: 32px
+}
+
+h2 {
+  font-size: 24px
+}
+
+h3 {
+  font-size: 18px
 }
