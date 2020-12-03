@@ -129,4 +129,5 @@ and
 
 $$ X \xrightarrow{d_\alpha} T(Y_\alpha)\xrightarrow{T(f)}T(Y_\beta)=X\xrightarrow{d_\beta}T(Y_\beta).$$
 
-Let
+Let us consider a concrete example using $$X=\mathbb{N}$$. With $$Y=\{0\}$$ and $$T(Y)=\{[x]|x\in \mathbb{N}\}$$ 
+
