@@ -134,7 +134,7 @@ To find a generator, we need to define $$Y\xrightarrow{i}X$$ such that $$i^{\#}(
 
 We already know what $$h$$ is: it takes the vector $$[n_0,n_1,\ldots]$$ in $$T(X)$$ and maps it to $$\sum_{i}i*n_i$$ in $$X$$ so, we can try to revert it. The simplest generator is by having $$Y=X$$, $$i=\text{id}_X$$ and $$d=\eta_X$$. Considering $$\eta_X(x)=[(x,1)]$$ and $$T(\text{id}_X)([(x,1)])=[(x,1)]$$, we can apply $$h$$ to obtain $$x*1$$ which is $$x$$. This generator is not super exciting, but it illustrates what I consider a ''cannonical representation'' of numbers as vectors: the number $$x$$ is represented as a vector with a one in position $$x$$ and zero in all other positions (We already knew this from the $$T$$-algebra $$h$$ though...).
 
-A more interesting case occurs with $$Y=\mathbb{N}$$, $$i(y)=10^y$$, and $$d(x)=[(p,r)]$$ such that $$\sum_{(p,r)\in d(x)}{r*10^p}$$. For $$x\in X$$, 
-$$d(x)$$ is its coefficients in base 10, the fmap of $$Y\xrightarrow{i}X$$ is the function $$T(Y)\xrightarrow{T(i)}T(X)$$ defined by $$T(i)([(y,s)])=[(i(y),s)]$$ so $$T(i)(d(x))=[(10^p,r)]$$ and when we apply $$h$$ we obtain the familiar expression $$\sum_{(p,r)\in d(x)} r*10^p$$ which is equal to $$x$$.
+A more interesting case occurs with $$Y=\mathbb{N}$$, $$i(y)=10^y$$, and $$d(x)=[(p,r)]$$ such that $$x=\sum_{(p,r)\in d(x)}{r*10^p}$$. For $$x\in X$$, 
+$$d(x)$$ is its coefficients in base 10, paired with the corresponding exponent, the fmap of $$Y\xrightarrow{i}X$$ is the function $$T(Y)\xrightarrow{T(i)}T(X)$$ defined by $$T(i)([(y,s)])=[(i(y),s)]$$ so $$T(i)(d(x))=[(10^p,r)]$$ and when we apply $$h$$ we obtain the expression $$\sum_{(p,r)\in d(x)} r*10^p$$ which we know is equal to $$x$$.
 
-(I just realised why it might be called "bases for algebras over a monad"...)
+We can define as many generators as numbers because we can change the base.
