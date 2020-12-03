@@ -129,5 +129,5 @@ and
 
 $$ X \xrightarrow{d_\alpha} T(Y_\alpha)\xrightarrow{T(f)}T(Y_\beta)=X\xrightarrow{d_\beta}T(Y_\beta).$$
 
-Let us consider a concrete example using $$X=\mathbb{N}$$. With $$Y=\{0\}$$ and $$T(Y)=\{[x]\|x\in \mathbb{N}\}$$ 
+Let us consider a concrete example using $$X=\mathbb{N}$$. With $$Y=\{0\}$$ and $$T(Y)=\{[x]\|x\in \mathbb{N}\}$$, we need to define $$Y\xrightarrow{i}X$$ such that $$i^{\#}(d(x))=x$$ for all $$x$$. Recall that $$i^{\#}$$ is equal to $$h \circ T(i)$$ under the $$T$$-algebra $$(X,h)$$.
 
