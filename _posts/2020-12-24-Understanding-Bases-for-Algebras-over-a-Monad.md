@@ -134,3 +134,4 @@ To find a generator, we need to define $$Y\xrightarrow{i}X$$ such that $$i^{\#}(
 
 We already know what $$h$$ is: it takes the vector $$[n_0,n_1,\ldots]$$ in $$T(X)$$ and maps it to $$\sum_{i}i*n_i$$ in $$X$$ so, we can try to revert it. The simplest generator is by having $$Y=X$$, $$i=\text{id}_X$$ and $$d=\eta_X$$. Considering $$\eta_X(x)=[(x,1)]$$ and $$T(\text{id}_X)([(x,1)])=[(x,1)]$$, we can apply $$h$$ to obtain $$x*1$$ which is $$x$$. This generator is not super exciting, but it illustrates what I consider a ''cannonical representation'' of numbers as vectors: the number $$x$$ is represented as a vector with a one in position $$x$$ and zero in all other positions (We already knew this from the $$T$$-algebra $$h$$ though...).
 
+A more interesting case occurs with $$Y=\textbf{Primes}$$ (i.e., $$Y\subset X$$), $$i=\text{id}_X$$, and $$d(x)=[(p,r)\| p\text{ is prime and }p*r\text{ divides }x]$$ 
