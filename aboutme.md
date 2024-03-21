@@ -1,11 +1,10 @@
 ---
 layout: page
-title: Fixed Point(er)s
-subtitle: The F in Functional is for Fun
+title: Eric Rothstein-Morris
+subtitle: One step at a time.
 ---
-Hello! My name is Eric G. Rothstein-Morris. I'm a fifth year Information Systems Technology and Design ([ISTD](http://istd.sutd.edu.sg)) PhD student at the Singapore University of Technology and Design ([SUTD](http://www.sutd.edu.sg)), under supervision of Assistant Professor [Sudipta Chattopadhyay](https://sudiptac.bitbucket.io/). I'm currently researching how to close timing and memory side-channels in software that does not necessarily follow constant-time programming guidelines.
+Hello! My name is Eric G. Rothstein-Morris. I'm a self-driven Software Engineer with a passion for theoretical Computer Science.
 
-Before coming to SUTD, I was a research assistant working with the [IT-security group](https://web.sec.uni-passau.de/) of the University of Passau. I completed my Masters in Engineering at the [Universidad de los Andes](https://uniandes.edu.co/en) in 2011. Since then, I have been exploring the world of research and academia.
 
 ## Research Interests
 - Applied formal methods
