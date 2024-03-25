@@ -27,7 +27,7 @@ Now, consider an automaton whose set of states is \\(\mathbb{Z}\\), its initial 
 We now consider one of the best solutions for this problem (**SPOILER ALERT**: if you have not solved it, try it yourself, is quite a fun problem!).
 <details>
   <summary>Click here to see the Solution</summary>
-
+test
 
 ```python
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
