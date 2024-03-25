@@ -1,6 +1,6 @@
 ---
 layout: post
-title: On Generalising Algorithms: A LeetCode Example
+title: On Generalising Algorithms - A LeetCode Example
 subtitle: From Linked Lists to Automata
 tags: [LeetCode, Automata]
 comments: true
