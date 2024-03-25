@@ -22,4 +22,77 @@ i + \sum(s') & \quad \text{when } s = s'\cdot i;\\
 \end{cases}
 $$
 
-The key observation is that if \\(s=xyz\\) such that \\(\sum(s)=0\\) then \\(\sum(s) = \sum(xz)\\). If we consider the state of the automaton after consuming \\(s\\) to be \\(\sum(s)\\), then \\(\sum(s) = \sum(xz)\\) and there is a loop from \\(\sum(x)\\) to itself with length \\(\|y\|\\).
+Now, consider an automaton whose set of states is \\(\mathbb{Z}\\), its initial state is 0 and the resulting state starting on \\(x\\) for the input \\(i\\) is the state \\(x+i\\). For this automaton, after consuming the sequence \\(s\\), we finish on \\(\sum(s)\\). Now,  if \\(s=xyz\\) such that \\(\sum(y)=0\\) then \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) loops \\(\sum(x)\\) to itself. 
+
+We now consider one of the best solutions for this problem (**SPOILER ALERT**: if you have not solved it, try it yourself, is quite a fun problem!).
+<details>
+  <summary>Click here to see the Solution</summary>
+
+```python
+    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # init is a ListNode whose value is 0 and has head as its next element. 
+        # It helps us in case the whole head adds up to zero
+        init = ListNode(0, head) 
+        # This hashmap uses sum values as keys and nodes as values
+        prefix_sums = {0: init}
+        # Calculate the prefix sum for each node and add to the hashmap
+        # Duplicate prefix sum values will be replaced
+        prefix_sum = 0
+        current = init
+        while current:
+            prefix_sum += current.val
+            # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
+            prefix_sums[prefix_sum] = current
+            current = current.next
+        # Reset prefix sum and current
+        prefix_sum = 0
+        current = init
+        # Delete zero sum consecutive sequences by setting node before sequence to node after
+        while current:
+            prefix_sum += current.val
+            # We are at state prefix_sum, do we know a longer sequence that takes us here? 
+            # If we do, then we connect to the suffix of that longer sequence
+            current.next = prefix_sums[prefix_sum].next
+            current = current.next
+        return init.next
+```
+
+</details>
+
+
+<details>
+  <summary>Click here to see the Generalisation</summary>
+
+```python
+    def sequenceMinimisation(self, list: Optional[ListNode]) -> Optional[ListNode]:
+        prefix_key = sum([])
+        # This entry helps us in case the sequence is equivalent to the empty sequence
+        init = ListNode(prefix_key, list) # This is a value
+        prefix = []
+        current = init
+        prefixes = {prefix_key: current}
+        while current:
+            prefix.append(current.val)
+            prefix_key = sum(prefix)  
+            prefixes[prefix_key] = current
+            current = current.next
+        # Reset prefix_key sum and current
+        prefix = []
+        current = init
+        # Delete zero sum consecutive sequences by setting node before sequence to node after
+        while current:
+            prefix.append(current.val)
+            prefix_key = sum(prefix)  # it is possible that prefix_key is an acc so this could be +=
+            current.next = prefixes[prefix_key].next
+            current = current.next
+        return init.next
+```
+
+</details>
+
+
+
+
+
+
+
