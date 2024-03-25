@@ -5,7 +5,6 @@ subtitle: From Linked Lists to Automata
 tags: [LeetCode, Automata]
 comments: true
 ---
-## Introduction
 Maybe some of you have tried to solve [LeetCode 1171: Remove Zero Sum Consecutive Nodes from Linked List](https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/). For those of you who have not, the problem is the following: given the `head` of a linked list of integer numbers, delete all subsequences of numbers that add up to zero until no such subsequences remain. So, for example, the list 
 \[1\rightarrow 2 \rightarrow -3 \rightarrow 3 \rightarrow 1 \] can reduce to either \(3\rightarrow 1\) or to \(1\rightarrow 2 \rightarrow 1\). The constraints are that the list contains between 1 and 1000 nodes and that each element of the list is in the range \([-1000, 1000]\).
 
@@ -17,7 +16,8 @@ Given a set of inputs \(I\) and a set of outcomes \(O\), a causal function \(f\)
 \[
 \sum(s)=
 \begin{cases}
-i + \sum(s') & \quad \text{when $s = s'\cdot i$};\\ 
+i + \sum(s') & \quad \text{when \(s = s'\cdot i\)};\\ 
 0 & \quad \text{otherwise}.
 \end{cases}
 \]
+The key observation is that if \(s=xyz\) such that \(\sum(s)=0\) then \(\sum(s) = \sum(xz)\). If we consider the state of the automaton after consuming \(s\) to be \(\sum(s)\), then \(\sum(s) = \sum(xz)\) and there is a loop from \(\sum(x)\) to itself with length \(|y|\).
