@@ -90,7 +90,35 @@ We now consider one of the best solutions for this problem (**SPOILER ALERT**: i
 
 </details>
 
-
+TEST TO SEE IF CODE WORKS OUTSIDE OF SPOILER BLOCKS:
+```python
+    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # init is a ListNode whose value is 0 and has head as its next element. 
+        # It helps us in case the whole head adds up to zero
+        init = ListNode(0, head) 
+        # This hashmap uses sum values as keys and nodes as values
+        prefix_sums = {0: init}
+        # Calculate the prefix sum for each node and add to the hashmap
+        # Duplicate prefix sum values will be replaced
+        prefix_sum = 0
+        current = init
+        while current:
+            prefix_sum += current.val
+            # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
+            prefix_sums[prefix_sum] = current
+            current = current.next
+        # Reset prefix sum and current
+        prefix_sum = 0
+        current = init
+        # Delete zero sum consecutive sequences by setting node before sequence to node after
+        while current:
+            prefix_sum += current.val
+            # We are at state prefix_sum, do we know a longer sequence that takes us here? 
+            # If we do, then we connect to the suffix of that longer sequence
+            current.next = prefix_sums[prefix_sum].next
+            current = current.next
+        return init.next
+```
 
 
 
