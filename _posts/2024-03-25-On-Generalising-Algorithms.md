@@ -28,6 +28,7 @@ We now consider one of the best solutions for this problem (**SPOILER ALERT**: i
 <details>
   <summary>Click here to see the Solution</summary>
 
+
 ```python
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # init is a ListNode whose value is 0 and has head as its next element. 
@@ -57,11 +58,13 @@ We now consider one of the best solutions for this problem (**SPOILER ALERT**: i
         return init.next
 ```
 
+
 </details>
 
 
 <details>
   <summary>Click here to see the Generalisation</summary>
+
 
 ```python
     def sequenceMinimisation(self, list: Optional[ListNode]) -> Optional[ListNode]:
@@ -87,6 +90,7 @@ We now consider one of the best solutions for this problem (**SPOILER ALERT**: i
             current = current.next
         return init.next
 ```
+
 
 </details>
 
