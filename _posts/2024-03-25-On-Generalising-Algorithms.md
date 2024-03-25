@@ -17,7 +17,7 @@ Given a set of inputs \\(I\\) and a set of outcomes \\(O\\), a causal function \
 \\[
 \sum(s)=
 \begin{cases}
-i + \sum(s') & \quad \text{when \\(s = s'\cdot i\\)};\\ 
+i + \sum(s') & \quad \text{when } s = s'\cdot i;\\ 
 0 & \quad \text{otherwise}.
 \end{cases}
 \\]
