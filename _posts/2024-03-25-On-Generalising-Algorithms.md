@@ -14,12 +14,12 @@ So what does this have to do with automata at all? Well, whenever an input seque
 
 Given a set of inputs \\(I\\) and a set of outcomes \\(O\\), a causal function \\(f\\) is a function of type \\(I^* \rightarrow O\\). For this problem, we set \\(I=[-1000, 1000]\\), \\(O=Nat\\), and \\(f=\sum\\), with \\(\sum : I^* \rightarrow O\\) defined, for \\(n \in I\\) and \\(s,s' \in I^*\\), by: 
 
-\\[
+$$
 \sum(s)=
 \begin{cases}
 i + \sum(s') & \quad \text{when } s = s'\cdot i;\\ 
 0 & \quad \text{otherwise}.
 \end{cases}
-\\]
+$$
 
 The key observation is that if \\(s=xyz\\) such that \\(\sum(s)=0\\) then \\(\sum(s) = \sum(xz)\\). If we consider the state of the automaton after consuming \\(s\\) to be \\(\sum(s)\\), then \\(\sum(s) = \sum(xz)\\) and there is a loop from \\(\sum(x)\\) to itself with length \\(|y|\\).
