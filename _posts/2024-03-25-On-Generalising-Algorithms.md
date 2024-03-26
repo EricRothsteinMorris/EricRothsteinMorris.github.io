@@ -25,106 +25,78 @@ $$
 Now, consider an automaton whose set of states is \\(\mathbb{Z}\\), its initial state is 0 and the resulting state starting on \\(x\\) for the input \\(i\\) is the state \\(x+i\\). For this automaton, after consuming the sequence \\(s\\), we finish on \\(\sum(s)\\). Now,  if \\(s=xyz\\) such that \\(\sum(y)=0\\) then \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) loops \\(\sum(x)\\) to itself. 
 
 We now consider one of the best solutions for this problem (**SPOILER ALERT**: if you have not solved it, try it yourself, is quite a fun problem!).
-<details>
-  <summary>Click here to see the Solution</summary>
-test
 
 ```python
-    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # init is a ListNode whose value is 0 and has head as its next element. 
-        # It helps us in case the whole head adds up to zero
-        init = ListNode(0, head) 
-        # This hashmap uses sum values as keys and nodes as values
-        prefix_sums = {0: init}
-        # Calculate the prefix sum for each node and add to the hashmap
-        # Duplicate prefix sum values will be replaced
-        prefix_sum = 0
-        current = init
-        while current:
-            prefix_sum += current.val
-            # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
-            prefix_sums[prefix_sum] = current
-            current = current.next
-        # Reset prefix sum and current
-        prefix_sum = 0
-        current = init
-        # Delete zero sum consecutive sequences by setting node before sequence to node after
-        while current:
-            prefix_sum += current.val
-            # We are at state prefix_sum, do we know a longer sequence that takes us here? 
-            # If we do, then we connect to the suffix of that longer sequence
-            current.next = prefix_sums[prefix_sum].next
-            current = current.next
-        return init.next
+def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    # init is a ListNode whose value is 0 and has head as its next element. 
+    # It helps us in case the whole head adds up to zero
+    init = ListNode(0, head) 
+    # This hashmap uses sum values as keys and nodes as values
+    prefix_sums = {0: init}
+    # Calculate the prefix sum for each node and add to the hashmap
+    # Duplicate prefix sum values will be replaced
+    prefix_sum = 0
+    current = init
+    while current:
+        prefix_sum += current.val
+        # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
+        prefix_sums[prefix_sum] = current
+        current = current.next
+    # Reset prefix sum and current
+    prefix_sum = 0
+    current = init
+    # Delete zero sum consecutive sequences by setting node before sequence to node after
+    while current:
+        prefix_sum += current.val
+        # We are at state prefix_sum, do we know a longer sequence that takes us here? 
+        # If we do, then we connect to the suffix of that longer sequence
+        current.next = prefix_sums[prefix_sum].next
+        current = current.next
+    return init.next
 ```
 
-
-</details>
-
-
-<details>
-  <summary>Click here to see the Generalisation</summary>
+Many would be satisfied with this solution, but knowing the relation to causal functions allows us to generalise the algorithm to the following *sequence minimisation* algorithm.
 
 
 ```python
-    def sequenceMinimisation(self, list: Optional[ListNode]) -> Optional[ListNode]:
-        prefix_key = sum([])
-        # This entry helps us in case the sequence is equivalent to the empty sequence
-        init = ListNode(prefix_key, list) # This is a value
-        prefix = []
-        current = init
-        prefixes = {prefix_key: current}
-        while current:
-            prefix.append(current.val)
-            prefix_key = sum(prefix)  
-            prefixes[prefix_key] = current
-            current = current.next
-        # Reset prefix_key sum and current
-        prefix = []
-        current = init
-        # Delete zero sum consecutive sequences by setting node before sequence to node after
-        while current:
-            prefix.append(current.val)
-            prefix_key = sum(prefix)  # it is possible that prefix_key is an acc so this could be +=
-            current.next = prefixes[prefix_key].next
-            current = current.next
-        return init.next
+def sequenceMinimisation(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    prefix_key = causal_function([])
+    # init is a ListNode whose value is 0 and has head as its next element. 
+    # It helps us in case the whole head adds up to zero
+    init = ListNode(prefix_key, head)
+    prefix = []
+    current = init
+    prefixes = {prefix_key: current}
+    while current:
+        prefix.append(current.val)
+        prefix_key = causal_function(prefix)  
+        # If two prefixes have the same value 
+        prefixes[prefix_key] = current
+        current = current.next
+    # Reset prefix_key sum and current
+    prefix = []
+    current = init
+    # Delete zero sum consecutive sequences by setting node before sequence to node after
+    while current:
+        prefix.append(current.val)
+        prefix_key = causal_function(prefix)
+        current.next = prefixes[prefix_key].next
+        current = current.next
+    return init.next
 ```
 
+where `causal_function` is a causal function with hashable output. This algorithm is able to compress a list `L` to a sub-list `l` such that `causal_function(L)` is equal to `causal_function(l)`. There is no guarantee of compression, though! Consider, for example, for the `median` function, we obtain the following compressions:
 
-</details>
-
-TEST TO SEE IF CODE WORKS OUTSIDE OF SPOILER BLOCKS:
 ```python
-    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # init is a ListNode whose value is 0 and has head as its next element. 
-        # It helps us in case the whole head adds up to zero
-        init = ListNode(0, head) 
-        # This hashmap uses sum values as keys and nodes as values
-        prefix_sums = {0: init}
-        # Calculate the prefix sum for each node and add to the hashmap
-        # Duplicate prefix sum values will be replaced
-        prefix_sum = 0
-        current = init
-        while current:
-            prefix_sum += current.val
-            # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
-            prefix_sums[prefix_sum] = current
-            current = current.next
-        # Reset prefix sum and current
-        prefix_sum = 0
-        current = init
-        # Delete zero sum consecutive sequences by setting node before sequence to node after
-        while current:
-            prefix_sum += current.val
-            # We are at state prefix_sum, do we know a longer sequence that takes us here? 
-            # If we do, then we connect to the suffix of that longer sequence
-            current.next = prefix_sums[prefix_sum].next
-            current = current.next
-        return init.next
+[1, 2, 3, -3, 4] -> [1, 2, 4]         (median is 2)
+[1, 2, 3, -3, -3] -> [1]              (median is 1)
+[1, 2, 3, -6, 4] -> [1, 2, 4]         (median is 2)
+[0] -> [0]                            (median is 0)
+[1, 2, 2, -2, -6] -> [1]              (median is 1)
+[1, 2, 3, 4, 6] -> [1, 2, 3, 4, 6]    (median is 3)
 ```
+Note that the last list did not compress to `[3]`, but that is ok since the guarantee of preserving the median still holds. 
 
+While not perfect, this algorithm runs in `O(n)` and uses `O(n)` space (for `prefix` and `prefixes`), and only requires the modification of the causal function for it to change its behaviour. These (latent) behaviours that appear when we change a parameter are what I studied very closely during my doctorate. Maybe I will write about those in the near future.
 
-
-
-
+Thanks for reading!
