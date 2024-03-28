@@ -54,7 +54,7 @@ $$
 
 ( \\(\varepsilon\\) denotes the empty sequence. )
 
-Intuitively, we say that there is a repeated value in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i \< j\\) such that $$ [\![ s ]\!]_f[i] $$ is equal to $$ [\![ s ]\!]_f[j] $$. For example, the sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace under `sum` is `[1, 3, 6, 3, 4]`, and the value `3` is repeated, meaning that `[3, 6, 3]` that can be compressed to `[3]`, yielding the reduced trace `[1, 3, 4]` (the trace of `[1 -> 2 -> 4]`).
+Intuitively, we say that there is a repeated value in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i \< j\\) such that $$ [\![ s ]\!]_f[i] $$ is equal to $$ [\![ s ]\!]_f[j] $$. For example, the sequence `[1 -> 2 -> 3 -> -3 -> 1]` compresses to `[1 -> 2 -> 1]` because its trace under `sum` is `[1, 3, 6, 3, 4]`, and the value `3` is repeated, meaning that `[3, 6, 3]` that can be compressed to `[3]`, yielding the reduced trace `[1, 3, 4]` (the trace of `[1 -> 2 -> 1]`).
 
 Consider now the following generalisation of the algorithm above that now takes a causal function as an input parameter.
 
