@@ -104,7 +104,7 @@ where `causal_function` is a causal function with hashable output. This algorith
 [1 -> 2 -> 2 -> -2 -> -6] => [1]                    (median is 1)
 [1 -> 2 -> 3 -> 4 -> 6] => [1 -> 2 -> 3 -> 4 -> 6]  (median is 3)
 ```
-The sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace is `[1, 1.5, 2, 2.5, 2]` and there is a loop ` [2, 2.5, 2]` that can be removed, yielding `[1, 1.5, 2]`, which is the trace of `[1 -> 2 -> 4]`. The reason why `[1 -> 2 -> 3 -> 4 -> 6]` does not compress to `[3]` is because its trace `[1, 1.5, 2, 2.5, 3]` has no loop. Pretty neat, huh?
+The sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace is `[1, 1.5, 2, 2.5, 2]`, and it has the loop `[2, 2.5, 2]` that can be removed, yielding `[1, 1.5, 2]`, which is the trace of `[1 -> 2 -> 4]`. The reason why `[1 -> 2 -> 3 -> 4 -> 6]` does not compress to `[3]` is because its trace `[1, 1.5, 2, 2.5, 3]` has no loop. Pretty neat, huh?
 
 This algorithm runs in `O(n)` and uses `O(n)` space (for `prefix` and `prefixes`), and only requires the modification of the causal function for it to change its behaviour. These (latent) behaviours that appear when we change a parameter are what I studied very closely during my doctorate. Maybe I will write about those in the near future.
 
