@@ -14,28 +14,18 @@ We now consider one of the best solutions for this problem (**SPOILER ALERT**: i
 
 ```python
 def removeZeroSumSublists(self, head: Optional[ListNode]) => Optional[ListNode]:
-    # init is a ListNode whose value is 0 and has head as its next element. 
-    # It helps us in case the whole head adds up to zero
     init = ListNode(0, head) 
-    # This hashmap uses sum values as keys and nodes as values
     prefix_sums = {0: init}
-    # Calculate the prefix sum for each node and add to the hashmap
-    # Duplicate prefix sum values will be replaced
     prefix_sum = 0
     current = init
     while current:
         prefix_sum += current.val
-        # Important: we update a value only if we found a prefix p and a prefix pq such that sum(q)=0
         prefix_sums[prefix_sum] = current
         current = current.next
-    # Reset prefix sum and current
     prefix_sum = 0
     current = init
-    # Delete zero sum consecutive sequences by setting node before sequence to node after
     while current:
         prefix_sum += current.val
-        # We are at state prefix_sum, do we know a longer sequence that takes us here? 
-        # If we do, then we connect to the suffix of that longer sequence
         current.next = prefix_sums[prefix_sum].next
         current = current.next
     return init.next
@@ -73,8 +63,6 @@ Consider now the following generalisation of the algorithm above that now takes 
 ```python
 def sequenceCompression(self, head: Optional[ListNode], causal_function) => Optional[ListNode]:
     prefix_key = causal_function([])
-    # init is a ListNode whose value is 0 and has head as its next element. 
-    # It helps us in case the whole head adds up to zero
     init = ListNode(prefix_key, head)
     prefix = []
     current = init
@@ -82,13 +70,10 @@ def sequenceCompression(self, head: Optional[ListNode], causal_function) => Opti
     while current:
         prefix.append(current.val)
         prefix_key = causal_function(prefix)  
-        # If two prefixes have the same value 
         prefixes[prefix_key] = current
         current = current.next
-    # Reset prefix_key sum and current
     prefix = []
     current = init
-    # Delete zero sum consecutive sequences by setting node before sequence to node after
     while current:
         prefix.append(current.val)
         prefix_key = causal_function(prefix)
