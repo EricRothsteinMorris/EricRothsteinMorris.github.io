@@ -66,7 +66,7 @@ $$
 
 ( \\(\varepsilon\\) denotes the empty sequence. )
 
-We say that there is a loop in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i \< j\\) such that $$ [\![ s ]\!]_f[i] $$ is equal to $$ [\![ s ]\!]_f[j] $$. For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. For example, the sequence The sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace under `sum` is `[1, 3, 6, 3, 4]`, and it has the loop `[3, 6, 3]` that can be removed, yielding the reduced trace `[1, 3, 4]`, which is the trace of `[1 -> 2 -> 4]`.
+We say that there is a loop in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i \< j\\) such that $$ [\![ s ]\!]_f[i] $$ is equal to $$ [\![ s ]\!]_f[j] $$. For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. For example, the sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace under `sum` is `[1, 3, 6, 3, 4]`, and it has the loop `[3, 6, 3]` that can be removed, yielding the reduced trace `[1, 3, 4]` (the trace of `[1 -> 2 -> 4]`).
 
 Consider now the following generalisation of the algorithm above that now takes a causal function as an input parameter.
 
@@ -107,7 +107,7 @@ where `causal_function` is a causal function with hashable output. This algorith
 [1 -> 2 -> 2 -> -2 -> -6] => [1]                    (median is 1)
 [1 -> 2 -> 3 -> 4 -> 6] => [1 -> 2 -> 3 -> 4 -> 6]  (median is 3)
 ```
-The sequence `[1 -> 2 -> 3 -> -3 -> -3]` compresses to `[1]` because its trace under `median` is `[1, 1.5, 2, 1.5, 1]`, and it has a loop from `1` to `1`, yielding `[1]`, which is the trace of `[1]`. The reason why `[1 -> 2 -> 3 -> 4 -> 6]` does not compress to `[3]` is because its trace `[1, 1.5, 2, 2.5, 3]` has no loops. Pretty neat, huh?
+The sequence `[1 -> 2 -> 3 -> -3 -> -3]` compresses to `[1]` because its trace under `median` is `[1, 1.5, 2, 1.5, 1]`, and it has a loop from `1`, yielding `[1]` (the trace of `[1]`). The reason why `[1 -> 2 -> 3 -> 4 -> 6]` does not compress to `[3]` is because its trace `[1, 1.5, 2, 2.5, 3]` has no loops. Pretty neat, huh?
 
 This algorithm runs in `O(n)` and uses `O(n)` space (for `prefix` and `prefixes`), and only requires the modification of the causal function for it to change its behaviour, hence its higher-order nature. These (latent) behaviours that appear when we change a parameter are what I studied very closely during my doctorate. Maybe I will write about those in the near future.
 
