@@ -1,7 +1,7 @@
 # --- General options --- #
 
 # Name of website
-title: Fixed Point(er)s
+title: Eric Rothstein
 
 # Short description of your site
 description: Personal Webpage of Eric G. Rothstein-Morris
@@ -70,7 +70,7 @@ author:
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
   rss: true
-  email: "eric_rothstein@sutd.edu.sg"
+  email: "eric.rothstein.contact+webpage@gmail.com"
 #  facebook:
   github: EricRothsteinMorris
   twitter: FixedPoints
