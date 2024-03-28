@@ -41,7 +41,7 @@ def removeZeroSumSublists(self, head: Optional[ListNode]) => Optional[ListNode]:
     return init.next
 ```
 
-So, why does this post mention higher-order functions? To get to that point, we first need to talk about *causal functions*. Given a set of inputs \\(I\\) and a set of outcomes \\(O\\), a *causal function* \\(f\\) is a function of type \\(I^* \rightarrow O\\), i.e., \\(f\\) receives a sequence of inputs in \\(I^* \\) and produces some output in \\(O\\). For this problem, we consider the sum causal function \\(\sum : \mathbb{Z}^*\rightarrow \mathbb{Z}\\), defined, for \\(n \in \mathbb{Z}\\) and \\(s,s' \in \mathbb{Z}^*\\), by: 
+So, why does this post mention higher-order functions? To get to that point, we first need to talk about *causal functions*. Given a set of inputs \\(I \\) and a set of outcomes \\(O \\), a *causal function* \\(f \\) is a function of type \\(I^* \rightarrow O\\), i.e., \\(f \\) receives a sequence of inputs in \\(I^* \\) and produces some output in \\(O \\). For this problem, we consider the sum causal function \\(\sum : \mathbb{Z}^{*} \rightarrow \mathbb{Z}\\), defined, for \\(n \in \mathbb{Z}\\) and \\(s,s' \in \mathbb{Z}^*\\), by: 
 
 $$
 \sum(s)=
