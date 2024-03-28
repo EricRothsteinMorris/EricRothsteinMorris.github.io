@@ -47,12 +47,14 @@ So, why does this post mention higher-order functions? To get to that point, we 
 $$
 \sum(s)=
 \begin{cases}
-i + \sum(s') & \quad \text{when } s = s'\cdot i  ;\\ 
+\sum(s') + i & \quad \text{when } s = s'\cdot i  ;\\ 
 0 & \quad \text{otherwise}.
 \end{cases}
 $$
 
-Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function \\(f : I^* \rightarrow O\\), sequences \\(s,s' \in I^* \\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted \\([\![ s ]\!]_f\\) by
+Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function 
+\\(f : I^* \rightarrow O \\), sequences \\(s,s' \in I^* \\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted 
+\\([\![ s ]\!]_f \\), by
 
 $$
 [\![ s ]\!]_f=
@@ -107,6 +109,6 @@ where `causal_function` is a causal function with hashable output. This algorith
 ```
 The sequence `[1 -> 2 -> 3 -> -3 -> 4]` compresses to `[1 -> 2 -> 4]` because its trace is `[1, 1.5, 2, 2.5, 2]`, and it has the loop `[2, 2.5, 2]` that can be removed, yielding `[1, 1.5, 2]`, which is the trace of `[1 -> 2 -> 4]`. The reason why `[1 -> 2 -> 3 -> 4 -> 6]` does not compress to `[3]` is because its trace `[1, 1.5, 2, 2.5, 3]` has no loop. Pretty neat, huh?
 
-This algorithm runs in `O(n)` and uses `O(n)` space (for `prefix` and `prefixes`), and only requires the modification of the causal function for it to change its behaviour. These (latent) behaviours that appear when we change a parameter are what I studied very closely during my doctorate. Maybe I will write about those in the near future.
+This algorithm runs in `O(n)` and uses `O(n)` space (for `prefix` and `prefixes`), and only requires the modification of the causal function for it to change its behaviour, hence its higher-order nature. These (latent) behaviours that appear when we change a parameter are what I studied very closely during my doctorate. Maybe I will write about those in the near future.
 
 Thanks for reading!
