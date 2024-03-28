@@ -41,7 +41,7 @@ def removeZeroSumSublists(self, head: Optional[ListNode]) => Optional[ListNode]:
     return init.next
 ```
 
-So, why does this post mention higher-order functions? To get to that point, we first need to talk about *causal functions*. Given a set of inputs \\(I\\) and a set of outcomes \\(O\\), a *causal function* \\(f\\) is a function of type \\(I^* \rightarrow O\\), i.e., \\(f\\) receives a sequence of inputs in \\(I^*\\) and produces some output in \\(O\\). For this problem, we consider the sum causal function \\(\sum : \mathbb{Z}^*\rightarrow \mathbb{Z}\\), defined, for \\(n \in \mathbb{Z}\\) and \\(s,s' \in \mathbb{Z}^*\\), by: 
+So, why does this post mention higher-order functions? To get to that point, we first need to talk about *causal functions*. Given a set of inputs \\(I\\) and a set of outcomes \\(O\\), a *causal function* \\(f\\) is a function of type \\(I^* \rightarrow O\\), i.e., \\(f\\) receives a sequence of inputs in \\(I^* \\) and produces some output in \\(O\\). For this problem, we consider the sum causal function \\(\sum : \mathbb{Z}^*\rightarrow \mathbb{Z}\\), defined, for \\(n \in \mathbb{Z}\\) and \\(s,s' \in \mathbb{Z}^*\\), by: 
 
 $$
 \sum(s)=
@@ -51,7 +51,7 @@ i + \sum(s') & \quad \text{when } s = s'\cdot i  ;\\
 \end{cases}
 $$
 
-Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function \\(f:I^* \rightarrow O\\), sequences \\(s,s' \in I^*\\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted \\([\![ s ]\!]_f\\) by
+Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function \\(f:I^* \rightarrow O\\), sequences \\(s,s' \in I^* \\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted \\([\![ s ]\!]_f\\) by
 
 $$
 [\![ s ]\!]_f=
@@ -63,7 +63,7 @@ $$
 
 ( \\(\varepsilon\\) denotes the empty sequence. )
 
-We say that there is a loop in the trace iff there are indices \\(i\\) and \\(j\\) with \\(i<j\\) such that \\([\![ s ]\!]_f[i]==[\![ s ]\!]_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
+We say that there is a loop in the trace iff there are indices \\(i\\) and \\(j\\) with \\(i< j\\) such that \\([\![ s ]\!]_f[i]==[\![ s ]\!]_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
 
 Consider now the following generalisation of the algorithm above that now takes a causal function as an input parameter.
 
