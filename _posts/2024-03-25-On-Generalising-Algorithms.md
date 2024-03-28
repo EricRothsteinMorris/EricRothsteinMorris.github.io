@@ -51,19 +51,19 @@ i + \sum(s') & \quad \text{when } s = s'\cdot i  ;\\
 \end{cases}
 $$
 
-Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function \\(f:I^* \rightarrow O\\), sequences \\(s,s' \in \mathbb{I}^*\\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted \\(\llbracket s \rrbracket_f\\) by
+Note that for a sequence \\(s=xyz\\) where \\(\sum(y)=0\\), we know that \\(\sum(s) = \sum(xz)\\), and the sequence \\(y\\) "loops" \\(\sum(x)\\) to itself. We formalise this concept of "looping" with the *trace* under \\(\sum\\). Given a causal function \\(f:I^* \rightarrow O\\), sequences \\(s,s' \in I^*\\) and \\(i \in I\\), we define the *trace of \\(s\\) under \\(f\\)*, denoted \\([\![ s ]\!]_f\\) by
 
 $$
-\llbracket s \rrbracket_f=
+[\![ s ]\!]_f=
 \begin{cases}
-\llbracket s' \rrbracket_f \cdot f(s) & \quad \text{when } s =  s'\cdot i ;\\ 
+[\![ s' ]\!]_f \cdot f(s) & \quad \text{when } s =  s'\cdot i ;\\ 
 \varepsilon & \quad \text{otherwise}.
 \end{cases}
 $$
 
 ( \\(\varepsilon\\) denotes the empty sequence. )
 
-We say that there is a loop in the trace iff there are indices \\(i\\) and \\(j\\) with \\(i<j\\) such that \\(\llbracket s \rrbracket_f[i]==\llbracket s \rrbracket_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
+We say that there is a loop in the trace iff there are indices \\(i\\) and \\(j\\) with \\(i<j\\) such that \\([\![ s ]\!]_f[i]==[\![ s ]\!]_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
 
 Consider now the following generalisation of the algorithm above that now takes a causal function as an input parameter.
 
