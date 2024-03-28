@@ -64,7 +64,7 @@ $$
 
 ( \\(\varepsilon\\) denotes the empty sequence. )
 
-We say that there is a loop in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i< j\\) such that \\([\![ s ]\!]_f[i]==[\![ s ]\!]_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
+We say that there is a loop in the trace iff there are indices \\(i \\) and \\(j \\) with \\(i<< j\\) such that \\([\![ s ]\!]_f[i]==[\![ s ]\!]_f[j]\\). For this problem, whenever \\(s=xyz\\) such that \\(\sum(y)=0\\) then there must be a loop in the trace. 
 
 Consider now the following generalisation of the algorithm above that now takes a causal function as an input parameter.
 
